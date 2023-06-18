@@ -2,14 +2,18 @@
 
 import { createBrowserClient } from '@/utils/supabase-browser';
 import { useRouter } from 'next/navigation';
+import { useState } from 'react';
+import Loading from '@/app/loading';
 
-// Supabase auth needs to be triggered client-side
 export function SupabaseLogin() {
   const supabase = createBrowserClient();
 
   const router = useRouter();
 
+  const [showLoader, setShowLoader] = useState(false);
+
   const handleEmailLogin = async () => {
+    setShowLoader(true);
     const { error } = await supabase.auth.signInWithPassword({
       email: 'test@test.com',
       password: 'test',
@@ -25,7 +29,7 @@ export function SupabaseLogin() {
 
   return (
     <>
-      <button onClick={handleEmailLogin}>Email Login</button>
+      {showLoader ? <Loading /> : <button onClick={handleEmailLogin}>Email Login</button>}
     </>
   );
 }

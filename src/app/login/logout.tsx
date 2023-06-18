@@ -2,16 +2,19 @@
 
 import { createBrowserClient } from '@/utils/supabase-browser';
 import { useRouter } from 'next/navigation';
+import { useState } from 'react';
+import Loading from '@/app/loading';
 
-// Supabase auth needs to be triggered client-side
 export function SupabaseLogout() {
   const supabase = createBrowserClient();
 
   const router = useRouter();
 
-  const handleSignOut = async () => {
-    const { error } = await supabase.auth.signOut();
+  const [showLoader, setShowLoader] = useState(false);
 
+  const handleSignOut = async () => {
+    setShowLoader(true);
+    const { error } = await supabase.auth.signOut();
     if (error) {
       console.log({ error });
     } else {
@@ -20,12 +23,9 @@ export function SupabaseLogout() {
     }
   };
 
-  // this `session` is from the root loader - server-side
-  // therefore, it can safely be used to conditionally render
-  // SSR pages without issues with hydration
   return (
     <>
-      <button onClick={handleSignOut}>Logout</button>
+      {showLoader ? <Loading /> : <button onClick={handleSignOut}>Logout</button>}
     </>
   );
-}
+};
