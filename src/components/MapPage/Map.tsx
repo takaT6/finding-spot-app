@@ -88,8 +88,26 @@ export function Map() {
         ))}
         <Marker position={location} label="現在地" />
       </GoogleMap>
-      <div className='z-1000 bottom-0 p-10 absolute'>
-        jogeogheoish
+      <div className="z-1000 absolute bottom-0 bg-amber-400">
+        <div className="w-screen">
+          <span className="flex justify-center">^</span>
+        </div>
+        <div className="flex flex-col overflow-x-scroll w-screen">
+          <div className="flex">
+            <div className="flex flex-nowrap">
+
+              <div className="inline-block w-32 h-32 bg-white border"></div>
+              <div className="inline-block w-32 h-32 bg-white border"></div>
+              <div className="inline-block w-32 h-32 bg-white border"></div>
+              <div className="inline-block w-32 h-32 bg-white border"></div>
+              <div className="inline-block w-32 h-32 bg-white border"></div>
+              <div className="inline-block w-32 h-32 bg-white border"></div>
+              <div className="inline-block w-32 h-32 bg-white border"></div>
+              <div className="inline-block w-32 h-32 bg-white border"></div>
+              <div className="inline-block w-32 h-32 bg-white border"> </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   )
