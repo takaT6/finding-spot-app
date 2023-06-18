@@ -1,11 +1,11 @@
+"server-only";
+
 import { SupabaseLogin } from '@/app/login/login';
 import { SupabaseLogout } from '@/app/login/logout';
-import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
-import { cookies } from 'next/headers';
-import { Database } from '@/types/database.types';
+import { createServerClient } from '@/utils/supabase-server';
 
 export default async function LoginPage() {
-  const supabase = createServerComponentClient<Database>({ cookies });
+  const supabase = createServerClient();
 
   const { data: { session } } = await supabase.auth.getSession();
 

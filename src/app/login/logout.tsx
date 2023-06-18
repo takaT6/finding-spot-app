@@ -1,11 +1,11 @@
 'use client';
 
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
+import { createBrowserClient } from '@/utils/supabase-browser';
 import { useRouter } from 'next/navigation';
 
 // Supabase auth needs to be triggered client-side
 export function SupabaseLogout() {
-  const supabase = createClientComponentClient();
+  const supabase = createBrowserClient();
 
   const router = useRouter();
 
@@ -16,6 +16,7 @@ export function SupabaseLogout() {
       console.log({ error });
     } else {
       router.refresh();
+      router.push("/");
     }
   };
 

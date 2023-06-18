@@ -1,10 +1,9 @@
+"server-only";
 import './globals.css';
-import AppContextProvider, { useAppContext } from '@/context/app-context';
+import AppContextProvider from '@/context/app-context';
 import { Header } from '@/components/Header';
 import { ScrollLock } from '@/utils/stop-scroll';
-import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
-import { Database } from '@/types/database.types';
-import { cookies } from 'next/headers';
+import { createServerClient } from '@/utils/supabase-server';
 
 export const metadata = {
   title: 'find map',
@@ -19,7 +18,7 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const supabase = createServerComponentClient<Database>({ cookies });
+  const supabase = createServerClient();
 
   const { data: { session } } = await supabase.auth.getSession();
 
