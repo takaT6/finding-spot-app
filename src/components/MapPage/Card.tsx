@@ -7,26 +7,30 @@ export function Card(props: Spot) {
 
   return (
     <>
-      <div className="w-2/5 max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+      <div className="inline-block w-32 h-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
         <div className="w-auto">
           <Image className="rounded-t-lg" src="/download.jpg" alt=""
             width={1980}
             height={1150}
-            sizes="100vw"
+            sizes="10vw"
             style={{
               width: '100%',
               height: 'auto',
             }} />
         </div>
-        <div className="space-y-1">
+        <div className="text-center">
           <h5 className="text-lg font-bold tracking-tight text-gray-900 dark:text-white">
             {props.name}
           </h5>
+        </div>
+        <div className="text-center">
           <p className="text-xs font-normal text-gray-700 dark:text-gray-400">
             {props.address1! + props.address2!}
           </p>
+        </div>
+        <div className="space-y-1">
           <details className="open:bg-white dark:open:bg-slate-900 open:ring-1 open:ring-black/5 dark:open:ring-white/10 open:shadow-lg p-1 rounded-lg">
-            <summary className="text-sm leading-6 text-slate-900 dark:text-white font-semibold select-none">
+            <summary className="text-center text-sm leading-6 text-slate-900 dark:text-white font-semibold select-none">
               詳細
             </summary>
             <div className="leading-6 text-slate-600 dark:text-slate-400">
@@ -48,9 +52,12 @@ export function Card(props: Spot) {
               </table>
             </div>
           </details>
-          <a href="#" className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-            場所を確認する→
-          </a>
+          <div className="text-center">
+            <a href="#" className="w-3/4 inline-flex items-center px-3 py-2 text-xs font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+              <div>場所を確認する</div>
+              <div>→</div>
+            </a>
+          </div>
         </div>
       </div>
     </>

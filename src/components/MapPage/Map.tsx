@@ -6,6 +6,7 @@ import { Spot } from '@/types/easyDB.types';
 import { getAllSpotsData } from '@/utils/supabase';
 import { useAppContext } from '@/context/app-context';
 import Loading from '@/app/loading';
+import { Card } from './Card';
 
 const containerStyle: CSSProperties = {
   height: "calc(100% - 40px)",
@@ -21,13 +22,11 @@ export function Map() {
 
   const [map, setMap] = useState<google.maps.Map | null>(null);
 
-  const mapOptions = useMemo<google.maps.MapOptions>(() => (
-    {
-      disableDefaultUI: true,
-      clickableIcons: true,
-      gestureHandling: "greedy"
-    }
-  ), []);
+  const mapOptions = useMemo<google.maps.MapOptions>(() => ({
+    disableDefaultUI: true,
+    clickableIcons: true,
+    gestureHandling: "greedy"
+  }), []);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -68,6 +67,10 @@ export function Map() {
     setMap(null);
   }, []);
 
+  const handleUnderSpotsListTap = () => {
+
+  };
+
   return isLoaded ? (
     <div className='h-full overflow-hidden'>
       <GoogleMap
@@ -88,23 +91,14 @@ export function Map() {
         ))}
         <Marker position={location} label="現在地" />
       </GoogleMap>
-      <div className="z-1000 absolute bottom-0 bg-amber-400">
-        <div className="w-screen">
+      <div className="z-1000 absolute bottom-0 bg-red-100">
+        <div className="w-screen" onClick={handleUnderSpotsListTap}>
           <span className="flex justify-center">^</span>
         </div>
-        <div className="flex flex-col overflow-x-scroll w-screen">
+        <div id="underSpotsList" className="flex flex-col overflow-x-scroll w-screen">
           <div className="flex">
             <div className="flex flex-nowrap">
-
-              <div className="inline-block w-32 h-32 bg-white border"></div>
-              <div className="inline-block w-32 h-32 bg-white border"></div>
-              <div className="inline-block w-32 h-32 bg-white border"></div>
-              <div className="inline-block w-32 h-32 bg-white border"></div>
-              <div className="inline-block w-32 h-32 bg-white border"></div>
-              <div className="inline-block w-32 h-32 bg-white border"></div>
-              <div className="inline-block w-32 h-32 bg-white border"></div>
-              <div className="inline-block w-32 h-32 bg-white border"></div>
-              <div className="inline-block w-32 h-32 bg-white border"> </div>
+              {spots.map((spot: Spot) => <Card key={spot.id} {...spot} />)}
             </div>
           </div>
         </div>
