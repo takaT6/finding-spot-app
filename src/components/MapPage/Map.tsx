@@ -68,7 +68,12 @@ export function Map() {
   }, []);
 
   const handleUnderSpotsListTap = () => {
-
+    const underSpotsListElem = document.getElementById("underSpotsList");
+    if(underSpotsListElem!.style.display == "none"){
+      underSpotsListElem!.style.display = "block"
+    }else{
+      underSpotsListElem!.style.display = "none"
+    };
   };
 
   return isLoaded ? (
