@@ -1,14 +1,21 @@
 import { Spot } from "@/types/easyDB.types";
 import { formatSupaDate } from "@/utils/dateUtil";
 import Image from "next/image";
+import { useState } from "react";
 
 export function Card(props: Spot) {
   const updated_at = formatSupaDate(props.updated_at);
 
+  const [imageShow, setImageShow] = useState(true);
+
+  const handleDetailClick = () => {
+
+  };
+
   return (
     <>
       <div className="inline-block w-32 h-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-        <div className="w-auto">
+        <div id="spot-img" className="w-auto">
           <Image className="rounded-t-lg" src="/download.jpg" alt=""
             width={1980}
             height={1150}
@@ -19,7 +26,7 @@ export function Card(props: Spot) {
             }} />
         </div>
         <div className="text-center">
-          <h5 className="text-lg font-bold tracking-tight text-gray-900 dark:text-white">
+          <h5 className="text-base font-bold tracking-tight text-gray-900 dark:text-white">
             {props.name}
           </h5>
         </div>
