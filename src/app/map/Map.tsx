@@ -69,10 +69,10 @@ export function Map() {
 
   const handleUnderSpotsListTap = () => {
     const underSpotsListElem = document.getElementById("underSpotsList");
-    if(underSpotsListElem!.style.display == "none"){
-      underSpotsListElem!.style.display = "block"
-    }else{
-      underSpotsListElem!.style.display = "none"
+    if (underSpotsListElem!.style.display == "none") {
+      underSpotsListElem!.style.display = "block";
+    } else {
+      underSpotsListElem!.style.display = "none";
     };
   };
 
@@ -102,7 +102,7 @@ export function Map() {
         </div>
         <div id="underSpotsList" className="flex flex-col overflow-x-scroll w-screen">
           <div className="flex">
-            <div className="flex flex-nowrap">
+            <div className="flex flex-row justify-between">
               {spots.map((spot: Spot) => <Card key={spot.id} {...spot} />)}
             </div>
           </div>
