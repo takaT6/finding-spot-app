@@ -39,6 +39,7 @@ export function Card(props: Spot) {
             </p>
           </div> : <></>
         }
+
         <div className="space-y-1">
           <details className="open:bg-white dark:open:bg-slate-900 open:ring-1 open:ring-black/5 dark:open:ring-white/10 open:shadow-lg p-1 rounded-lg">
             <summary onClick={handleDetailClick} className="text-center text-sm leading-6 text-slate-900 dark:text-white font-semibold select-none">
