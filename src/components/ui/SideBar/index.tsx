@@ -1,16 +1,9 @@
 "use client";
 
-import { NavigationLink } from "@/components/Sidebar/NavigationLink";
-import { Overlay } from "@/components/Sidebar/Overlay";
+import { NavigationLink } from "@/components/ui/SideBar/NavLink";
+import { Overlay } from "@/components/ui/SideBar/Overlay";
 import { useAppContext } from '@/context/app-context';
-
-function SidebarHeader() {
-  return (
-    <div className="flex border-b border-gray justify-center">
-      <span className="p-2 text-right">menu</span>
-    </div>
-  );
-};
+import { SidebarHeader } from "@/components/ui/SideBar/SideBarHeader";
 
 export function Sidebar() {
   const { isSidebarOpen } = useAppContext();

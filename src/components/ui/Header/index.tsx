@@ -2,12 +2,11 @@
 
 import Link from "next/link";
 import { Icon } from "@/components/Icon";
-import { Sidebar } from "@/components/Sidebar";
+import { Sidebar } from "@/components/ui/SideBar";
 import { useAppContext } from '@/context/app-context';
 import { useCallback } from "react";
-import { Session } from "@supabase/auth-helpers-nextjs";
 
-export function Header({ session }: { session: Session | null; }) {
+export function Header() {
   const { isSidebarOpen, setIsSidebarOpen } = useAppContext();
 
   const handleSidebarIconClick = useCallback(() => {
@@ -24,9 +23,6 @@ export function Header({ session }: { session: Session | null; }) {
         <span className="m-2"><Link href="/">This is header.</Link></span>
 
         <span className="flex">
-          <Link href={"/login"} className="m-2">
-            {session ? <Icon name="Login" /> : <Icon name="User" />}
-          </Link>
           <Icon name="Settings" className="m-2" />
         </span>
       </div>
